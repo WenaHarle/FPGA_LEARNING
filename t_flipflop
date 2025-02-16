@@ -1,0 +1,26 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity T_flip_flop is
+    Port ( 
+        t   : in  STD_LOGIC; 
+        clk : in  STD_LOGIC;
+        q   : out STD_LOGIC
+    );
+end T_flip_flop;
+
+architecture Behavioral of T_flip_flop is
+    signal q_int : STD_LOGIC := '0'; -- Internal signal to store state
+begin
+    process (clk)
+    begin
+        if rising_edge(clk) then
+            if t = '1' then
+                q_int <= not q_int;  -- Toggle state when T is high
+            end if;
+        end if;
+    end process;
+
+    -- Assign output
+    q <= q_int;
+end Behavioral;

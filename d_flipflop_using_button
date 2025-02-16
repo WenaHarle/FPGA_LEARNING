@@ -1,0 +1,23 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity d_flipflop is
+    Port ( clk   : in STD_LOGIC;  -- Clock utama sistem
+           clk_b : in STD_LOGIC;  -- Tambahan sinyal clock
+           d     : in STD_LOGIC;  -- Input D flip-flop
+           q     : out STD_LOGIC  -- Output Q flip-flop
+         );
+end d_flipflop;
+
+architecture Behavioral of d_flipflop is
+begin
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            if clk_b = '1' then
+                q <= d;  -- Menyimpan nilai D ke Q hanya saat clk_b = '1'
+            end if;
+        end if;
+    end process;
+
+end Behavioral;

@@ -1,0 +1,21 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity jk_flipflop is
+    Port ( J   : in  STD_LOGIC;
+           K   : in  STD_LOGIC;
+           clk : in  STD_LOGIC;
+           clk_b: in  STD_LOGIC;
+           Q   : out STD_LOGIC;
+           Q_bar : out STD_LOGIC);
+end jk_flipflop;
+
+architecture LogicOnly of jk_flipflop is
+    signal q_int : STD_LOGIC := '0';
+begin
+    Q     <= q_int;
+    Q_bar <= not q_int;
+    
+    q_int <= (J and not q_int) or (not K and q_int) when rising_edge(clk) and clk_b = '1';
+    
+end LogicOnly;

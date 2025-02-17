@@ -1,23 +1,23 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity mux_2to1 is
-    Port (
-        sel : in std_logic;  -- Select signal
-        a   : in std_logic;  -- Input 1
-        b   : in std_logic;  -- Input 2
-        y   : out std_logic  -- Output
+entity mux21b is
+    port (
+        a : in STD_LOGIC;
+        b : in STD_LOGIC;
+        s : in STD_LOGIC;
+        y : out STD_LOGIC
     );
-end mux_2to1;
+end mux21b;
 
-architecture behavioral of mux_2to1 is
+architecture mux21b of mux21b is
 begin
-    process (sel, a, b)
+    p1: process(a, b, s)
     begin
-        if sel = '0' then
+        if s = '0' then
             y <= a;
         else
             y <= b;
         end if;
-    end process;
-end behavioral;
+    end process p1;
+end mux21b;
